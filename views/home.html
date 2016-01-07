@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, width=device-width">
+    <title>用户首页</title>
+    <link href="../stylesheets/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .goods-wrapper {
+            width: 80%;
+            /*height: 500px;*/
+            min-height: 500px;
+            margin: 50px auto;
+            border: 1px solid #cccccc;
+        }
+
+        .goods-title {
+            height: 40px;
+            background: #e8e8e8;
+            border-bottom: inherit;
+            overflow: hidden;
+        }
+
+        .goods-title h3 {
+            margin: 0;
+            float: left;
+            padding-left: 10px;
+            font-size: 18px;
+            height: 100%;
+            line-height: 40px;
+        }
+
+        .btn-group {
+            float: right;
+        }
+
+        .btn-1 {
+            margin-right: 20px;
+            border-radius: 0px;
+            background-color: #5cb85c;
+            color: #ffffff;
+            border: none;
+            outline: none;
+            height: 30px;
+            margin-top: 5px;
+        }
+
+        .btn-1:last-child {
+            background: #00b3ee;
+        }
+
+        .btn-1:last-child:hover {
+            background: #00b3ee;
+        }
+
+        .btn-1:hover {
+            color: #ffffff;
+            background: #5cb85c;
+        }
+
+        .spys {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .spys-li {
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            border: 1px #000;
+            list-style: none;
+            margin-left: 30px;
+            margin-top: 20px;
+            /*float: left;*/
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="goods-wrapper">
+    <div class="goods-title">
+        <h3>商品列表</h3>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-1 " onclick="window.location.pathname='/addcommodity' ">添加商品</button>
+            <button type="button" class="btn btn-1">购物车</button>
+            <button type="button" class="btn btn-1">退出</button>
+        </div>
+    </div>
+    <ul class="spys">
+        <%for(var i in Commoditys){ if(!Commoditys[i].name) continue;%>
+        <li class="spys-li">
+            <div>
+                <img width="80" height="100" src="../images/iphone.jpg">
+            </div>
+            <div style="margin-top: 5px">
+                <a><%=Commoditys[i].name%></a>
+                <strong style="color: red">￥<%=Commoditys[i].price%></strong>
+            </div>
+            <div style="margin-top: 5px">
+                <a class="btn btn-success" style="width: 120px" href="/addToCart/<%=Commoditys[i]._id%>">加入购物车</a>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+</div>
+<script src="../javascripts/jquery.js"></script>
+<script src="../javascripts/bootstrap.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>
